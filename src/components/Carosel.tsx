@@ -3,24 +3,24 @@ import React, { useState, useEffect, useRef } from 'react';
 import './carousel.css';
 
 const images = [
-  '/images/img1.jpg',  
-  '/images/img2.jpg',  
-  '/images/img3.jpg',  
-  '/images/img4.jpg',   
-  '/images/img5.jpg',   
-  '/images/img6.jpg',   
+  '/images/img1.jpg',    
+  '/images/img2.jpg',     
+  '/images/img3.jpg',    
+  '/images/img4.jpg',     
+  '/images/img5.jpg',     
+  '/images/img6.jpg',     
 ];
 
 const Carousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);  
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
+  
   useEffect(() => {
-    if (!isPaused) {
-      intervalRef.current = setInterval(() => {
+    if (!isPaused) {  
+      intervalRef.current = setInterval(() => {  
         setCurrentSlide((prev) => (prev + 1) % images.length);
-      }, 3000);
+      }, 3000);  
     }
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
